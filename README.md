@@ -11,7 +11,7 @@ A real-time, web-based platform that enables educators to collaboratively create
 - **Content Management**: Support for multimedia uploads and structured modules.
 - **Version Control**: Tracks and manages course revisions.
 
-## 📁 Dataset / Stack
+## 📁 TechStack
 
 - **Frontend**: React, Tailwind CSS, TypeScript
 - **Backend**: Supabase (PostgreSQL, Auth, Realtime)
