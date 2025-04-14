@@ -11,6 +11,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "chart.js": "^4.4.1",
+    "react-chartjs-2": "^5.2.0",
     "@supabase/supabase-js": "^2.39.7",
     "lucide-react": "^0.344.0",
     "quill-image-resize-module-react": "^3.0.0",

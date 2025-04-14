@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Book, Plus, Edit2, Trash2, LogOut, ChevronDown, Star, Eye, Sparkles, Search, ShoppingCart, Heart, DollarSign } from 'lucide-react';
+import { 
+  Book, Plus, Edit2, Trash2, LogOut, ChevronDown, Star, Eye, 
+  Sparkles, Search, ShoppingCart, Heart, DollarSign, TrendingUp 
+} from 'lucide-react';
 import { useCourseStore } from '../store/courseStore';
 import { useAuthStore } from '../store/authStore';
 import { useThemeStore } from '../store/themeStore';
@@ -82,14 +85,10 @@ export function CourseList() {
 
   const backgroundStyle = {
     backgroundImage: isDarkMode 
-      ? `
-        linear-gradient(to bottom, rgba(15, 23, 42, 0.85), rgba(30, 41, 59, 0.85)),
-        url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80')
-      `
-      : `
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.85), rgba(249, 250, 251, 0.85)),
-        url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80')
-      `,
+      ? `linear-gradient(to bottom, rgba(15, 23, 42, 0.85), rgba(30, 41, 59, 0.85)),
+        url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80')`
+      : `linear-gradient(to bottom, rgba(255, 255, 255, 0.85), rgba(249, 250, 251, 0.85)),
+        url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80')`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundAttachment: 'fixed',
@@ -175,6 +174,19 @@ export function CourseList() {
                   <Cart />
                 </>
               )}
+              {user?.role === 'educator' && (
+                <button
+                  onClick={() => navigate('/statistics')}
+                  className={`inline-flex items-center px-6 py-3 rounded-full text-white transition-all transform hover:scale-105 ${
+                    isDarkMode 
+                      ? 'bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600' 
+                      : 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700'
+                  } shadow-lg`}
+                >
+                  <TrendingUp className="h-5 w-5 mr-2" />
+                  Statistics
+                </button>
+              )}
               <div className="relative">
                 <button
                   onClick={() => setShowUserMenu(!showUserMenu)}
@@ -197,13 +209,10 @@ export function CourseList() {
 
                 {showUserMenu && (
                   <>
-                    {/* Backdrop to close menu when clicking outside */}
                     <div 
                       className="fixed inset-0 z-[65]"
                       onClick={() => setShowUserMenu(false)}
                     />
-                    
-                    {/* User Menu */}
                     <div 
                       className={`absolute right-0 mt-2 w-48 rounded-xl shadow-lg z-[70] ${
                         isDarkMode ? 'bg-[#1E293B]/90' : 'bg-white/90'
@@ -232,7 +241,7 @@ export function CourseList() {
       {/* Main Content */}
       <div className="pt-24 pb-12 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Header Section with Theme Toggle */}
+          {/* Header Section */}
           <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
             <div>
               <h2 className={`text-3xl font-bold ${isDarkMode ? 'text-gray-100' : 'text-gray-900'}`}>

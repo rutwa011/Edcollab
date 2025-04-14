@@ -8,6 +8,7 @@ import { CourseEditor } from './components/CourseEditor';
 import { CourseViewer } from './components/CourseViewer';
 import { CheckoutPage } from './components/CheckoutPage';
 import { PaymentSuccess } from './components/PaymentSuccess';
+import { Statistics } from './components/Statistics';
 import { useAuthStore } from './store/authStore';
 import { useCourseStore } from './store/courseStore';
 import { useThemeStore } from './store/themeStore';
@@ -70,7 +71,6 @@ function App() {
           <Route 
             path="/courses/:id/view" 
             element={user ? <CourseViewer /> : <Navigate to="/auth" replace />} 
-          
           />
           <Route
             path="/checkout"
@@ -79,6 +79,14 @@ function App() {
           <Route
             path="/payment-success"
             element={user ? <PaymentSuccess /> : <Navigate to="/auth" replace />}
+          />
+          <Route
+            path="/statistics"
+            element={
+              user?.role === 'educator' 
+                ? <Statistics />
+                : <Navigate to="/courses" replace />
+            }
           />
           <Route 
             path="*" 
